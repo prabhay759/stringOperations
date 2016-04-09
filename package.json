@@ -1,0 +1,37 @@
+{
+  "name": "string-operations",
+  "version": "0.0.1",
+  "description": "This library will do string operations like replace, truncate, pad and many more etc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -R xunit test > unittest-reports.xml"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prabhay759/stringOperations.git"
+  },
+  "keywords": [
+    "padLeft",
+    "padRight",
+    "truncate",
+    "replace"
+  ],
+  "author": "Prabhay Gupta",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/prabhay759/stringOperations/issues"
+  },
+  "homepage": "https://github.com/prabhay759/stringOperations#readme",
+  "dependencies": {
+    "assert": "^1.3.0",
+    "mocha": "^2.4.5",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "should": "^8.3.0"
+  },
+  "jshintConfig": {
+    "esnext": true,
+    "eqeqeq": true
+  }
+}
