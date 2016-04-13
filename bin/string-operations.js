@@ -1,41 +1,69 @@
 var _ = require('underscore');
 
-var stringOperation = exports;
+var stringOperation = module.exports = {};
 
-stringOperation.PadRight = function(options) {
- var opts = {
-   value: '',
-   padCharacter: ' '
- };
- opts.maxLength = opts.value.length;
+//
+// Add Padding at the right of the string.
+//
+// Usage:
+//      stringOps.padRight(options)
+//
+// Where:
+//      options     one or more of the following:
+//          value      data which you want to pad- default value will be empty string ''
+//          padChar    pad character which you want to append the value default value will be white space ' '
+//          maxLength  Total length of data after padding
+//
+//
+stringOperation.padRight = function(options) {
+  var opts = {
+    value: '',
+    padChar: ' ',
+  };
+  opts.maxLength = opts.value.length;
 
- _.extend(opts, options);
+  _.extend(opts, options);
 
- if (!opts.value || opts.maxLength <= opts.value.length || opts.maxLength >= 200  || !opts.padCharacter || opts.padCharacter.length > 1) {
-   return opts.value;
- }
+  if (!opts.value || !opts.maxLength || opts.maxLength <= opts.value.length || opts.maxLength >= 200 ||
+      !opts.padChar || opts.padChar.length > 1) {
+    return opts.value;
+  }
 
- var padString = new Array(5 + 1).join(opts.padCharacter);
- opts.value = opts.value + padString.substring(0, opts.maxLength - opts.value.length);
+  var padString = new Array(opts.maxLength + 1).join(opts.padChar);
+  opts.value = opts.value + padString.substring(0, opts.maxLength - opts.value.length);
 
- return opts.value;
+  return opts.value;
 };
 
-stringOperation.PadLeft = function(options) {
- var opts = {
-   value: '',
-   padCharacter: ' '
- };
- opts.maxLength = opts.value.length;
+//
+// Add Padding at the right of the string.
+//
+// Usage:
+//      stringOps.padRight(options)
+//
+// Where:
+//      options     one or more of the following:
+//          value      data which you want to pad- default value will be empty string ''
+//          padChar    pad character which you want to append the value default value will be white space ' '
+//          maxLength  Total length of data after padding
+//
+//
+stringOperation.padLeft = function(options) {
+  var opts = {
+    value: '',
+    padChar: ' ',
+  };
+  opts.maxLength = opts.value.length;
 
- _.extend(opts, options);
+  _.extend(opts, options);
 
- if(!opts.value || opts.maxLength <= opts.value.length || opts.maxLength >= 200 || !opts.padCharacter || opts.padCharacter.length > 1) {
-   return opts.value;
- }
+  if (!opts.value || !opts.maxLength || opts.maxLength <= opts.value.length || opts.maxLength >= 200 ||
+     !opts.padChar || opts.padChar.length > 1) {
+    return opts.value;
+  }
 
- var padString = new Array(5 + 1).join(opts.padCharacter);
- opts.value = padString.substring(0, opts.maxLength - opts.value.length) + opts.value;
+  var padString = new Array(opts.maxLength + 1).join(opts.padChar);
+  opts.value = padString.substring(0, opts.maxLength - opts.value.length) + opts.value;
 
- return opts.value;
+  return opts.value;
 };
