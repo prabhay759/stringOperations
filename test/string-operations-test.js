@@ -2,247 +2,245 @@ var assert = require('assert');
 var should = require('should');
 var stringOperation = require('../bin/string-operations');
 
-describe('stringOperation',() => {
-  describe('PadRight', () => {
+describe('stringOperation', () => {
+  describe('padRight', () => {
     var tests = [
       {
-        description: 'should return padded string when value is not null & maxLength is greater than value & padCharacter is 0',
+        description: 'should return padded string when value is not null & maxLength is greater than value & padChar is 0',
         input: {
           value: 'abc',
           maxLength: 5,
-          padCharacter: '0',
+          padChar: '0',
         },
-        expected: 'abc00'
+        expected: 'abc00',
       },
       {
-        description: 'should return padded string when value is not null & maxLength is greater than value & padCharacter is empty space',
+        description: 'should return padded string when value is not null & maxLength is greater than value & padChar is empty space',
         input: {
           value: 'abc',
           maxLength: 5,
-          padCharacter: ' ',
+          padChar: ' ',
         },
-        expected: 'abc  '
+        expected: 'abc  ',
       },
       {
-        description: 'should return input value when value is null & maxLength is greater than value & padCharacter is empty space',
+        description: 'should return input value when value is null & maxLength is greater than value & padChar is empty space',
         input: {
           value: null,
           maxLength: 5,
-          padCharacter: ' ',
+          padChar: ' ',
         },
-        expected: null
+        expected: null,
       },
       {
-        description: 'should return input value when value is undefined & maxLength is greater than value & padCharacter is empty space',
+        description: 'should return input value when value is undefined & maxLength is greater than value & padChar is empty space',
         input: {
           value: undefined,
           maxLength: 5,
-          padCharacter: ' ',
+          padChar: ' ',
         },
-        expected: undefined
+        expected: undefined,
       },
       {
-        description: 'should return input value when value is empty string & maxLength is greater than value & padCharacter is empty space',
+        description: 'should return input value when value is empty string & maxLength is greater than value & padChar is empty space',
         input: {
           value: '',
           maxLength: 5,
-          padCharacter: ' ',
+          padChar: ' ',
         },
-        expected: ''
+        expected: '',
       },
       {
-        description: 'should return input value when value is empty string & maxLength is less than value & padCharacter is empty space',
+        description: 'should return input value when value is empty string & maxLength is less than value & padChar is empty space',
         input: {
           value: 'abcde',
           maxLength: 2,
-          padCharacter: ' ',
+          padChar: ' ',
         },
-        expected: 'abcde'
+        expected: 'abcde',
       },
       {
-        description: 'should return input value when value is empty string & maxLength is 0 & padCharacter is empty space',
+        description: 'should return input value when value is empty string & maxLength is 0 & padChar is empty space',
         input: {
           value: 'abcde',
           maxLength: 0,
-          padCharacter: ' ',
+          padChar: ' ',
         },
-        expected: 'abcde'
+        expected: 'abcde',
       },
       {
-        description: 'should return input value when value is empty string & maxLength is -1 & padCharacter is empty space',
+        description: 'should return input value when value is empty string & maxLength is -1 & padChar is empty space',
         input: {
           value: 'abcde',
           maxLength: -1,
-          padCharacter: ' ',
+          padChar: ' ',
         },
-        expected: 'abcde'
+        expected: 'abcde',
       },
       {
-        description: 'should return input value when value is empty string & maxLength is 200 & padCharacter is empty space',
+        description: 'should return input value when value is empty string & maxLength is 200 & padChar is empty space',
         input: {
           value: 'abcde',
           maxLength: 200,
-          padCharacter: ' ',
+          padChar: ' ',
         },
-        expected: 'abcde'
+        expected: 'abcde',
       },
       {
-        description: 'should return input value when value is empty string & maxLength is null & padCharacter is empty space',
+        description: 'should return input value when value is empty string & maxLength is null & padChar is empty space',
         input: {
           value: 'abcde',
           maxLength: null,
-          padCharacter: ' ',
+          padChar: ' ',
         },
-        expected: 'abcde'
+        expected: 'abcde',
       },
       {
-        description: 'should return input value when value is empty string & maxLength is undefined & padCharacter is empty space',
+        description: 'should return input value when value is empty string & maxLength is undefined & padChar is empty space',
         input: {
           value: 'abcde',
           maxLength: undefined,
-          padCharacter: ' ',
+          padChar: ' ',
         },
-        expected: 'abcde'
+        expected: 'abcde',
       },
       {
-        description: 'should return input value when value is empty string & maxLength is greater than value length & padCharacter is more than one character',
+        description: 'should return input value when value is empty string & maxLength is greater than value length & padChar is more than one character',
         input: {
           value: 'abcde',
           maxLength: 7,
-          padCharacter: 'abc',
+          padChar: 'abc',
         },
-        expected: 'abcde'
+        expected: 'abcde',
       },
     ];
 
     tests.forEach((test) => {
       it(test.description, () => {
-        var actual = stringOperation.PadRight(test.input);
+        var actual = stringOperation.padRight(test.input);
 
         assert.equal(actual, test.expected);
-        //actual.should.be.eql(test.expected);
       });
     });
   });
 
-  describe('PadLeft', () => {
+  describe('padLeft', () => {
     var tests = [
       {
-        description: 'should return padded string when value is not null & maxLength is greater than value & padCharacter is 0',
+        description: 'should return padded string when value is not null & maxLength is greater than value & padChar is 0',
         input: {
           value: 'abc',
           maxLength: 5,
-          padCharacter: '0',
+          padChar: '0',
         },
-        expected: '00abc'
+        expected: '00abc',
       },
       {
-        description: 'should return padded string when value is not null & maxLength is greater than value & padCharacter is empty space',
+        description: 'should return padded string when value is not null & maxLength is greater than value & padChar is empty space',
         input: {
           value: 'abc',
           maxLength: 5,
-          padCharacter: ' ',
+          padChar: ' ',
         },
-        expected: '  abc'
+        expected: '  abc',
       },
       {
-        description: 'should return input value when value is null & maxLength is greater than value & padCharacter is empty space',
+        description: 'should return input value when value is null & maxLength is greater than value & padChar is empty space',
         input: {
           value: null,
           maxLength: 5,
-          padCharacter: ' ',
+          padChar: ' ',
         },
-        expected: null
+        expected: null,
       },
       {
-        description: 'should return input value when value is undefined & maxLength is greater than value & padCharacter is empty space',
+        description: 'should return input value when value is undefined & maxLength is greater than value & padChar is empty space',
         input: {
           value: undefined,
           maxLength: 5,
-          padCharacter: ' ',
+          padChar: ' ',
         },
-        expected: undefined
+        expected: undefined,
       },
       {
-        description: 'should return input value when value is empty string & maxLength is greater than value & padCharacter is empty space',
+        description: 'should return input value when value is empty string & maxLength is greater than value & padChar is empty space',
         input: {
           value: '',
           maxLength: 5,
-          padCharacter: ' ',
+          padChar: ' ',
         },
-        expected: ''
+        expected: '',
       },
       {
-        description: 'should return input value when value is empty string & maxLength is less than value & padCharacter is empty space',
+        description: 'should return input value when value is empty string & maxLength is less than value & padChar is empty space',
         input: {
           value: 'abcde',
           maxLength: 2,
-          padCharacter: ' ',
+          padChar: ' ',
         },
-        expected: 'abcde'
+        expected: 'abcde',
       },
       {
-        description: 'should return input value when value is empty string & maxLength is 0 & padCharacter is empty space',
+        description: 'should return input value when value is empty string & maxLength is 0 & padChar is empty space',
         input: {
           value: 'abcde',
           maxLength: 0,
-          padCharacter: ' ',
+          padChar: ' ',
         },
-        expected: 'abcde'
+        expected: 'abcde',
       },
       {
-        description: 'should return input value when value is empty string & maxLength is -1 & padCharacter is empty space',
+        description: 'should return input value when value is empty string & maxLength is -1 & padChar is empty space',
         input: {
           value: 'abcde',
           maxLength: -1,
-          padCharacter: ' ',
+          padChar: ' ',
         },
-        expected: 'abcde'
+        expected: 'abcde',
       },
       {
-        description: 'should return input value when value is empty string & maxLength is 200 & padCharacter is empty space',
+        description: 'should return input value when value is empty string & maxLength is 200 & padChar is empty space',
         input: {
           value: 'abcde',
           maxLength: 200,
-          padCharacter: ' ',
+          padChar: ' ',
         },
-        expected: 'abcde'
+        expected: 'abcde',
       },
       {
-        description: 'should return input value when value is empty string & maxLength is null & padCharacter is empty space',
+        description: 'should return input value when value is empty string & maxLength is null & padChar is empty space',
         input: {
           value: 'abcde',
           maxLength: null,
-          padCharacter: ' ',
+          padChar: ' ',
         },
-        expected: 'abcde'
+        expected: 'abcde',
       },
       {
-        description: 'should return input value when value is empty string & maxLength is undefined & padCharacter is empty space',
+        description: 'should return input value when value is empty string & maxLength is undefined & padChar is empty space',
         input: {
           value: 'abcde',
           maxLength: undefined,
-          padCharacter: ' ',
+          padChar: ' ',
         },
-        expected: 'abcde'
+        expected: 'abcde',
       },
       {
-        description: 'should return input value when value is empty string & maxLength is greater than value length & padCharacter is more than one character',
+        description: 'should return input value when value is empty string & maxLength is greater than value length & padChar is more than one character',
         input: {
           value: 'abcde',
           maxLength: 7,
-          padCharacter: 'abc',
+          padChar: 'abc',
         },
-        expected: 'abcde'
+        expected: 'abcde',
       },
     ];
 
     tests.forEach((test) => {
       it(test.description, () => {
-        var actual = stringOperation.PadLeft(test.input);
+        var actual = stringOperation.padLeft(test.input);
 
         assert.equal(actual, test.expected);
-        //actual.should.be.eql(test.expected);
       });
     });
   });
