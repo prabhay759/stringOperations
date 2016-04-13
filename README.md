@@ -1,5 +1,6 @@
 # stringOperations
-This library will do operation on string like padLeft and padRight
+## This library will do operation on string like padLeft and padRight
+```
 Truncate, replace all occurrences will be implemented sooner.
  //
  // Add Padding at the right of the string.
@@ -38,3 +39,4 @@ var result = stringOps.padLeft(options);
 console.log(result);
 
 // '00abcde'
+```
