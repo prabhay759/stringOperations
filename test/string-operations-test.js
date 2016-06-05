@@ -244,4 +244,151 @@ describe('stringOperation', () => {
       });
     });
   });
+
+  describe('replaceAll', () => {
+     var tests = [
+      {
+        description: 'should return value with replaced value when input value and replaceTo is not null or undefined',
+        input: {
+          value: 'abcdecfgd',
+          repTo: 'c',
+          repWith: '',
+        },
+        expected: 'abdefgd',
+      },
+      {
+        description: 'should return value with replaced value when input value and replaceTo is not null or undefined',
+        input: {
+          value: 'abcdecfgd',
+          repTo: 'c',
+          repWith: 'w',
+        },
+        expected: 'abwdewfgd',
+      },
+      {
+        description: 'should return null when input value is null',
+        input: {
+          value: null,
+          repTo: 'c',
+          repWith: 'w',
+        },
+        expected: null,
+      },
+      {
+        description: 'should return undefined when input value is null',
+        input: {
+          value: undefined,
+          repTo: 'c',
+          repWith: 'w',
+        },
+        expected: null,
+      },
+      {
+        description: 'should return value when input repTo is empty string',
+        input: {
+          value: 'undefined',
+          repTo: '',
+          repWith: 'w',
+        },
+        expected: 'undefined',
+      },
+      {
+        description: 'should return value when input repTo is an numeric value',
+        input: {
+          value: 'abcdefgh7hgkjkk7',
+          repTo: 7,
+          repWith: 'w',
+        },
+        expected: 'abcdefghwhgkjkkw',
+      },
+      {
+        description: 'should return value when input repTo is an numeric value',
+        input: {
+          value: 'abcdefgh7hgkjkk7',
+          repTo: '7',
+          repWith: 'w',
+        },
+        expected: 'abcdefghwhgkjkkw',
+      },
+    ];
+
+    tests.forEach((test) => {
+      it(test.description, () => {
+        var actual = stringOperation.replaceAll(test.input);
+        assert.equal(actual, test.expected);
+      });
+    });
+  });
+
+  describe('truncate', () => {
+     var tests = [
+      {
+        description: 'should return value with truncated value when input value and length is provided and value.length is greater than length',
+        value: 'abcdecfgd',
+        length: 7,
+        expected: 'abcdecf',
+      },
+      {
+        description: 'should return value with truncated value when input value and length is provided and value.length is less than length',
+        value: 'abcdecfgd',
+        length: 12,
+        expected: 'abcdecfgd',
+      },
+      {
+        description: 'should return value with truncated value when input value and length is provided but length is in string format',
+        value: 'abcdecfgd',
+        length: 'abc',
+        expected: 'abcdecfgd',
+      },
+      {
+        description: 'should return value with truncated value when input value and length is provided but length is in string format',
+        value: 'abcdecfgd',
+        length: '7',
+        expected: 'abcdecf',
+      },
+      {
+        description: 'should return value when value is set empty string',
+        value: '',
+        length: '7',
+        expected: '',
+      },
+      {
+        description: 'should return value when value is set null',
+        value: null,
+        length: '7',
+        expected: null,
+      },
+      {
+        description: 'should return value when value is set undefined',
+        value: undefined,
+        length: '7',
+        expected: undefined,
+      },
+      {
+        description: 'should return value when value is set but length is not set',
+        value: undefined,
+        length: '',
+        expected: undefined,
+      },
+      {
+        description: 'should return value when value is set but length is null',
+        value: undefined,
+        length: null,
+        expected: undefined,
+      },
+      {
+        description: 'should return value when value is set but length is undefined',
+        value: undefined,
+        length: undefined,
+        expected: undefined,
+      }
+    ];
+
+    tests.forEach((test) => {
+      it(test.description, () => {
+        var actual = stringOperation.truncate(test.value, test.length);
+        assert.equal(actual, test.expected);
+      });
+    });
+  });
 });

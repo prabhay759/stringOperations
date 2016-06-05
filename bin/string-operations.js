@@ -10,12 +10,13 @@ var stringOperation = module.exports = {};
 //
 // Where:
 //      options     one or more of the following:
-//          value      data which you want to pad- default value will be empty string ''
-//          padChar    pad character which you want to append the value default value will be white space ' '
-//          maxLength  Total length of data after padding
+//       value      data which you want to pad- default value will be empty string ''
+//       padChar    pad character which you want to append the value default value will be
+//                  white space' '
+//       maxLength  Total length of data after padding
 //
 //
-stringOperation.padRight = function(options) {
+stringOperation.padRight = function (options) {
   var opts = {
     value: '',
     padChar: ' ',
@@ -24,8 +25,8 @@ stringOperation.padRight = function(options) {
 
   _.extend(opts, options);
 
-  if (!opts.value || !opts.maxLength || opts.maxLength <= opts.value.length || opts.maxLength >= 200 ||
-      !opts.padChar || opts.padChar.length > 1) {
+  if (!opts.value || !opts.maxLength || opts.maxLength <= opts.value.length ||
+    opts.maxLength >= 200 || !opts.padChar || opts.padChar.length > 1) {
     return opts.value;
   }
 
@@ -36,19 +37,20 @@ stringOperation.padRight = function(options) {
 };
 
 //
-// Add Padding at the right of the string.
+// Add Padding at the left of the string.
 //
 // Usage:
-//      stringOps.padRight(options)
+//      stringOps.padLeft(options)
 //
 // Where:
 //      options     one or more of the following:
 //          value      data which you want to pad- default value will be empty string ''
-//          padChar    pad character which you want to append the value default value will be white space ' '
+//          padChar    pad character which you want to append the value default value
+//          will be white space ' '
 //          maxLength  Total length of data after padding
 //
 //
-stringOperation.padLeft = function(options) {
+stringOperation.padLeft = function (options) {
   var opts = {
     value: '',
     padChar: ' ',
@@ -57,8 +59,8 @@ stringOperation.padLeft = function(options) {
 
   _.extend(opts, options);
 
-  if (!opts.value || !opts.maxLength || opts.maxLength <= opts.value.length || opts.maxLength >= 200 ||
-     !opts.padChar || opts.padChar.length > 1) {
+  if (!opts.value || !opts.maxLength || opts.maxLength <= opts.value.length ||
+     opts.maxLength >= 200 || !opts.padChar || opts.padChar.length > 1) {
     return opts.value;
   }
 
@@ -66,4 +68,62 @@ stringOperation.padLeft = function(options) {
   opts.value = padString.substring(0, opts.maxLength - opts.value.length) + opts.value;
 
   return opts.value;
+};
+
+//
+// Replace character in the string all occurences with case sensitive
+//
+// Usage:
+//      stringOps.replace(obj)
+//
+// Where:
+//      obj     All of the following:
+//          val      input data where you want to replace character
+//          repTo    character you want to replace
+//          repWith  Character with whom you want to replace
+//
+stringOperation.replaceAll = function (obj) {
+  var opts = {
+    value: '',
+    repTo: '',
+    repWith: '',
+  };
+
+  _.extend(opts, obj);
+
+  if (!opts.value) {
+    return opts.value;
+  }
+
+  if (!opts.repTo) {
+    return opts.value;
+  }
+
+  return opts.value.split(opts.repTo).join(opts.repWith);
+};
+
+//
+// truncate the input strings
+//
+// Usage:
+//      stringOps.truncate(value, maxLength)
+//
+// Where:
+//      value       input data where you want to truncate
+//      maxLength   maxLength you want
+//
+stringOperation.truncate = function (value, maxLength) {
+  if (!value) {
+    return value;
+  }
+
+  if (!maxLength || !parseInt(maxLength)) {
+    return value;
+  }
+
+  if (parseInt(maxLength) < value.Length) {
+    return value;
+  }
+
+  return value.substring(0, maxLength);
 };
